@@ -130,7 +130,12 @@ internal class EventStore(
     private fun flushReports(storedReports: Collection<File>) {
         if (!storedReports.isEmpty()) {
             val size = storedReports.size
-            logger.i("Sending $size saved error(s) to Bugsnag")
+            val logMessage = "Sending $size saved error(s) to Bugsnag"
+            if (size >= ConfigInternal.DEFAULT_MAX_PERSISTED_EVENTS / 2) {
+                logger.w(logMessage)
+            } else {
+                logger.i(logMessage)
+            }
             for (eventFile in storedReports) {
                 flushEventFile(eventFile)
             }

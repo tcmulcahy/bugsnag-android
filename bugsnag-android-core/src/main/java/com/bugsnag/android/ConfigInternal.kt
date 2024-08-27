@@ -154,8 +154,8 @@ internal class ConfigInternal(
 
     companion object {
         private const val DEFAULT_MAX_BREADCRUMBS = 100
-        private const val DEFAULT_MAX_PERSISTED_SESSIONS = 128
-        private const val DEFAULT_MAX_PERSISTED_EVENTS = 32
+        const val DEFAULT_MAX_PERSISTED_SESSIONS = 128
+        const val DEFAULT_MAX_PERSISTED_EVENTS = 32
         private const val DEFAULT_MAX_REPORTED_THREADS = 200
         private const val DEFAULT_THREAD_COLLECTION_TIME_LIMIT_MS: Long = 5000
         private const val DEFAULT_LAUNCH_CRASH_THRESHOLD_MS: Long = 5000

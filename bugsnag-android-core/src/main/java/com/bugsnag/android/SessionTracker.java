@@ -265,6 +265,10 @@ class SessionTracker extends BaseObservable implements ForegroundDetector.OnActi
     void flushStoredSessions() {
         List<File> storedFiles = sessionStore.findStoredFiles();
 
+        if (storedFiles.size() >= ConfigInternal.DEFAULT_MAX_PERSISTED_SESSIONS) {
+            logger.w("Sending " + storedFiles.size() + " saved session(s) to Bugsnag");
+        }
+
         for (File storedFile : storedFiles) {
             flushStoredSession(storedFile);
         }
